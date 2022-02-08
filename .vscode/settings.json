@@ -1,0 +1,5 @@
+{
+  "files.maxMemoryForLargeFilesMB": 2048,
+  "typescript.preferences.quoteStyle": "double",
+  "javascript.preferences.quoteStyle": "double"
+}
