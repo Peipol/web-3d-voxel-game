@@ -7,7 +7,7 @@
   });
 </script>
 
-<h1>Babylon js</h1>
+<h1>babylon js</h1>
 <canvas id="gameCanvas" />
 
 <style>
@@ -20,6 +20,7 @@
     margin: 0;
     padding: 0;
   }
+
   :global(body) {
     overflow: hidden;
     width: 100%;
@@ -27,17 +28,20 @@
     margin: 0;
     padding: 0;
   }
+
   #gameCanvas {
     height: 100%;
     width: 100%;
   }
+
   h1 {
     color: #ff3e00;
     text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
+    font-size: 2rem;
+    font-weight: 400;
     line-height: 1.1;
     margin: 2rem auto;
     max-width: 14rem;
+    text-align: center;
   }
 </style>

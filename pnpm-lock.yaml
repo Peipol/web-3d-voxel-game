@@ -10,7 +10,6 @@ specifiers:
   '@types/react-dom': ^17.0.11
   '@typescript-eslint/eslint-plugin': ^5.10.2
   '@typescript-eslint/parser': ^5.10.2
-  Babylon.js@5.0.0-beta.6: git://github.com/BabylonJS/Babylon.js#5.0.0-beta.6
   eslint: ^8.8.0
   prettier: ^2.5.1
   svelte: ^3.46.4
@@ -23,7 +22,6 @@ specifiers:
 
 dependencies:
   '@babylonjs/core': 4.2.1
-  Babylon.js@5.0.0-beta.6: github.com/BabylonJS/Babylon.js/e0240eea167bd33e0ec58904741223d8a50978fe
 
 devDependencies:
   '@babylonjs/inspector': 4.2.1_f689100a3ffd6e0212ef44b78340853d
@@ -1643,10 +1641,3 @@ packages:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
     dev: true
-
-  github.com/BabylonJS/Babylon.js/e0240eea167bd33e0ec58904741223d8a50978fe:
-    resolution: {tarball: https://codeload.github.com/BabylonJS/Babylon.js/tar.gz/e0240eea167bd33e0ec58904741223d8a50978fe}
-    name: babylonjs
-    version: 5.0.0-beta.6
-    engines: {node: '>=12.x'}
-    dev: false

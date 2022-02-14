@@ -1,10 +1,11 @@
-// import "@babylonjs/core/Debug/debugLayer";
+import "@babylonjs/core/Debug/debugLayer";
 import "@babylonjs/inspector";
 import { Engine } from "@babylonjs/core/Engines/engine";
 import { Scene } from "@babylonjs/core/scene";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
+import "@babylonjs/core/Materials/standardMaterial"
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 
 export default class Game {
