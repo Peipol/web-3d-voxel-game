@@ -5,31 +5,35 @@ import { Scene } from "@babylonjs/core/scene";
 import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
-import "@babylonjs/core/Materials/standardMaterial"
+import "@babylonjs/core/Materials/standardMaterial";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 
 export default class Game {
-
   public canvas: HTMLCanvasElement | undefined;
   public engine: Engine;
   public scene: Scene;
 
-  constructor() {
-    this.canvas = this.getCanvas();
-    
+  constructor(gameCanvas: HTMLCanvasElement) {
+    this.canvas = gameCanvas;
     this.engine = new Engine(this.canvas, false);
     this.scene = new Scene(this.engine);
 
     const camera: ArcRotateCamera = new ArcRotateCamera(
       "Camera",
       Math.PI / 2,
-      Math.PI / 2,
-      2,
+      Math.PI / 6,
+      15,
       Vector3.Zero(),
       this.scene
     );
 
     camera.attachControl(this.canvas, true);
+
+    this.setCameraZoomConfig(camera, {
+      wheelPrecision: 70,
+      lowerRadiusLimit: 3,
+      upperRadiusLimit: 30,
+    });
 
     const light: HemisphericLight = new HemisphericLight(
       "light",
@@ -39,17 +43,32 @@ export default class Game {
 
     light.intensity = 0.7;
 
-    const sphere = MeshBuilder.CreateSphere(
-      "sphere",
-      { diameter: 1, segments: 16 },
-      this.scene
-    );
+    // const sphere = MeshBuilder.CreateSphere(
+    //   "sphere",
+    //   { diameter: 1, segments: 16 },
+    //   this.scene
+    // );
 
-    sphere.position = new Vector3(0, 0, 0);
+    // const cone = MeshBuilder.CreateCylinder(
+    //   "cone",
+    //   {
+    //     diameterTop: 1.6,
+    //     diameterBottom: 1,
+    //     height: 0.9,
+    //   },
+    //   this.scene
+    // );
+    // cone.position = new Vector3(0, -0.5, 0);
+    // cone.scaling.z = 0.6;
+
+    // const n = 0.3;
+    // sphere.clone().position.x = n;
+
+    // sphere.position = new Vector3(-n, 0, 0);
 
     // this.scene.debugLayer.show();
 
-    this.debugMode();
+    this.debugModeHotKeys();
 
     this.resizeReady(this.engine);
 
@@ -58,18 +77,24 @@ export default class Game {
     });
   }
 
+  setCameraZoomConfig(
+    camera: ArcRotateCamera,
+    opt: {
+      wheelPrecision: number;
+      lowerRadiusLimit: number;
+      upperRadiusLimit: number;
+    }
+  ) {
+    Object.assign(camera, opt);
+  }
+
   resizeReady(engine: Engine) {
     window.addEventListener("resize", () => {
       engine.resize();
     });
   }
 
-  getCanvas() {
-    const canvas = document.getElementById("gameCanvas") as HTMLCanvasElement;
-    return canvas;
-  }
-
-  debugMode() {
+  debugModeHotKeys() {
     window.addEventListener("keydown", (ev) => {
       // Shift+Ctrl+Alt+I
       if (ev.shiftKey && ev.ctrlKey && ev.altKey && ev.code === "KeyI") {
