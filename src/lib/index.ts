@@ -6,30 +6,29 @@ import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
 import "@babylonjs/core/Materials/standardMaterial";
-import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 
 export default class Game {
   public canvas: HTMLCanvasElement | undefined;
   public engine: Engine;
   public scene: Scene;
+  public camera: ArcRotateCamera;
 
   constructor(gameCanvas: HTMLCanvasElement) {
     this.canvas = gameCanvas;
     this.engine = new Engine(this.canvas, false);
     this.scene = new Scene(this.engine);
-
-    const camera: ArcRotateCamera = new ArcRotateCamera(
+    this.camera = new ArcRotateCamera(
       "Camera",
       Math.PI / 2,
       Math.PI / 6,
-      15,
+      10,
       Vector3.Zero(),
       this.scene
     );
 
-    camera.attachControl(this.canvas, true);
+    this.camera.attachControl(this.canvas, true);
 
-    this.setCameraZoomConfig(camera, {
+    this.setCameraZoomConfig(this.camera, {
       wheelPrecision: 70,
       lowerRadiusLimit: 3,
       upperRadiusLimit: 30,
@@ -105,5 +104,9 @@ export default class Game {
         }
       }
     });
+  }
+
+  getMeshByName(name: string){
+    return this.scene.getMeshByName(name);
   }
 }
