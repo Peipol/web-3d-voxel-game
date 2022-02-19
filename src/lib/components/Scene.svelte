@@ -7,7 +7,7 @@
 
   let gameCanvas: HTMLCanvasElement;
 
-  export let debug = true;
+  export let debug = false;
 
   onMount(async () => {
     game = new Game(gameCanvas);
@@ -20,7 +20,7 @@
   })();
 </script>
 
-<div class="full-width-and-height">
+<div id="gameContainer" class="full-width-and-height">
   <canvas class="full-width-and-height" bind:this={gameCanvas} />
   {#if game}
     <slot scene={game.scene} />

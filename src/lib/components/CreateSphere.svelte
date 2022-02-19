@@ -2,19 +2,19 @@
   import { onMount } from "svelte";
   import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
   import type { Scene } from "@babylonjs/core/scene";
-  import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 
   export let scene: Scene;
-  export let sizeValue: number = 0.5;
-  export let name: string = "box";
+  export let segments: number = 8;
+  export let diameter: number = 1;
+  export let name: string = "sphere";
   export let position: number[] = [0, 0, 0];
 
   onMount(() => {
-    const box = MeshBuilder.CreateBox(
+    const sphere = MeshBuilder.CreateSphere(
       `${name}`,
-      { height: sizeValue, width: sizeValue, depth: sizeValue },
+      { segments: segments, diameter: diameter },
       scene
     );
-    box.position = box.position.fromArray(position);
+    sphere.position = sphere.position.fromArray(position);
   });
 </script>
